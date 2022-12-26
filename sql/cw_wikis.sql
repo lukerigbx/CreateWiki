@@ -18,6 +18,7 @@ CREATE TABLE /*_*/cw_wikis (
   wiki_dbcluster VARCHAR(5) DEFAULT 'c1',
   wiki_category VARCHAR(64) NOT NULL,
   wiki_extensions MEDIUMTEXT NULL,
+  wiki_tags MEDIUMTEXT NULL,
   wiki_experimental SMALLINT NOT NULL DEFAULT '0'
 ) /*$wgDBTableOptions*/;
 

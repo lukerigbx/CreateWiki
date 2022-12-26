@@ -28,6 +28,7 @@ class RemoteWiki {
 	private $locked;
 	private $dbcluster;
 	private $category;
+    private $wikitags;
 	private $experimental;
 	/** @var CreateWikiHookRunner */
 	private $hookRunner;
@@ -66,6 +67,7 @@ class RemoteWiki {
 		$this->locked = $wikiRow->wiki_locked;
 		$this->dbcluster = $wikiRow->wiki_dbcluster;
 		$this->category = $wikiRow->wiki_category;
+        $this->wikitags = $wikiRow->wiki_wikitags;
 		$this->experimental = $wikiRow->wiki_experimental;
 	}
 
@@ -315,6 +317,20 @@ class RemoteWiki {
 		$this->category = $category;
 		$this->newRows['wiki_category'] = $category;
 	}
+
+    public function getTags() {
+        return $this->wikitags;
+    }
+
+    public function setTags( string $wikiTags ) {
+        $this->changes['tags'] = [
+            'old' => $this->wikitags,
+            'new' => $wikiTags
+        ];
+
+        $this->wikitags = $wikiTags;
+        $this->newRows['wiki_tags'] = $wikiTags;
+    }
 
 	public function getServerName() {
 		return $this->url;

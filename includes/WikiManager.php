@@ -92,6 +92,7 @@ class WikiManager {
 		string $language,
 		bool $private,
 		string $category,
+        string $wikitags,
 		string $requester,
 		string $actor,
 		string $reason
@@ -132,7 +133,8 @@ class WikiManager {
 				'wiki_language' => $language,
 				'wiki_private' => (int)$private,
 				'wiki_creation' => $this->dbw->timestamp(),
-				'wiki_category' => $category
+				'wiki_category' => $category,
+                'wiki_tags' => $wikitags
 			]
 		);
 

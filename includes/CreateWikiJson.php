@@ -172,6 +172,7 @@ class CreateWikiJson {
 			'created' => $wikiObject->wiki_creation,
 			'dbcluster' => $wikiObject->wiki_dbcluster,
 			'category' => $wikiObject->wiki_category,
+            'tags' => $wikiObject->wiki_tags,
 			'url' => $wikiObject->wiki_url ?? false,
 			'core' => [
 				'wgSitename' => $wikiObject->wiki_sitename,

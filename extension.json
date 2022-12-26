@@ -158,6 +158,11 @@
 			"public": true,
 			"value": []
 		},
+		"CreateWikiTags": {
+			"description": "Array. An array of tags used for wiki categorisaion.",
+			"public": true,
+			"value": []
+		},
 		"CreateWikiCustomDomainPage": {
 			"description": "String. Page name to link to for more information on custom domains.",
 			"public": true,
@@ -235,6 +240,11 @@
 		},
 		"CreateWikiUseCategories": {
 			"description": "Boolean. Whether to use categories to categorise wikis.",
+			"public": true,
+			"value": false
+		},
+		"CreateWikiUseTags": {
+			"description": "Boolean. Whether to use tags to categorise wikis.",
 			"public": true,
 			"value": false
 		},

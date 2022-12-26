@@ -34,6 +34,7 @@ class CreateWikiJob extends Job {
 				$this->params['language'],
 				$this->params['private'],
 				$this->params['category'],
+                $this->params['tags'],
 				$this->params['requester'],
 				$this->params['creator'],
 				"[[Special:RequestWikiQueue/{$this->params['id']}|Requested]]"

@@ -71,6 +71,15 @@ class SpecialCreateWiki extends FormSpecialPage {
 			];
 		}
 
+        if ( $this->config->get( 'CreateWikiUseTags' ) && $this->config->get( 'CreateWikiTags' ) ) {
+            $formDescriptor['tags'] = [
+                'type' => 'list-multi',
+                'label-message' => 'createwiki-label-tags',
+                'options' => $this->config->get( 'CreateWikiTags' ),
+                'default' => 'none',
+            ];
+        }
+
 		$formDescriptor['reason'] = [
 			'type' => 'textarea',
 			'rows' => 4,
@@ -96,9 +105,15 @@ class SpecialCreateWiki extends FormSpecialPage {
 			$category = 'uncategorised';
 		}
 
+        if ( $this->config->get( 'CreateWikiUseTags' ) ) {
+            $tags = $formData['tags'];
+        } else {
+            $tags = 'none';
+        }
+
 		$wm = new WikiManager( $formData['dbname'], $this->hookRunner );
 
-		$wm->create( $formData['sitename'], $formData['language'], $private, $category, $formData['requester'], $this->getContext()->getUser()->getName(), $formData['reason'] );
+		$wm->create( $formData['sitename'], $formData['language'], $private, $category, $tags, $formData['requester'], $this->getContext()->getUser()->getName(), $formData['reason'] );
 
 		$this->getOutput()->addHTML( Html::successBox( $this->msg( 'createwiki-success' )->escaped() ) );
 
